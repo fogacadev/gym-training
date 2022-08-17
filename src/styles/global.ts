@@ -13,8 +13,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         font-family: 'Inter', sans-serif;
-        color: ${props => props.theme['gray-700']};
-        background-color: ${props => props.theme['gray-100']};
+        color: ${defaultTheme["gray-700"]};
+        background-color: ${defaultTheme["gray-100"]};
         font-size: 16px;
     }
 
