@@ -1,6 +1,7 @@
 import { GiBiceps } from "react-icons/gi";
-import { AboutContent, ListItemContainer, TimelineContent, TrashIcon } from "./styles";
+import { AboutContent, ConfirmIcon, ListItemContainer, TimelineContent, TrashIcon } from "./styles";
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState } from "react";
 
 interface ListItemProps {
     id: string;
@@ -16,7 +17,27 @@ interface Details {
     description: string;
 }
 
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export function ListItem({ id, title, descriptionOne = undefined, descriptionTwo = undefined, onDelete, onClick, details = [] }: ListItemProps) {
+
+    const [isDeleting, setIsDeleting] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (isDeleting) {
+            sleep(3000).then(() => {
+                setIsDeleting(false);
+            });
+        }
+
+    }, [isDeleting])
+
+    const handleDelete = (id: string) => {
+        onDelete(id);
+        setIsDeleting(false);
+    }
 
     return (
         <ListItemContainer>
@@ -57,7 +78,12 @@ export function ListItem({ id, title, descriptionOne = undefined, descriptionTwo
                 }
 
             </div>
-            <TrashIcon onClick={() => onDelete(id)} />
+            {!isDeleting ? (
+                <TrashIcon onClick={() => setIsDeleting(true)} />
+            ) : (
+                <ConfirmIcon onClick={() => handleDelete(id)} />
+            )}
+
         </ListItemContainer>
     )
 }

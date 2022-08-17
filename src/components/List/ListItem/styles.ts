@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { BsTrash} from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
+import { RiErrorWarningLine } from "react-icons/ri"
 
 export const ListItemContainer = styled.div`
     display:flex;
@@ -55,6 +56,16 @@ transition: color 0.2s;
         cursor:pointer;
     }
 `;
+
+export const ConfirmIcon = styled(RiErrorWarningLine)`
+    transition: color 0.2s;
+    color:${props => props.theme['danger']};
+
+    &:hover{    
+        color:${props => props.theme['danger']};
+        cursor:pointer;
+    }
+`
 
 export const TimelineContent = styled.div`
     margin-top:1rem;
