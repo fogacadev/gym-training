@@ -8,8 +8,9 @@ import { Subtitle, Title } from "../../components/Title";
 import { deleteEvolution, getEvolutionsByExercicieId } from "../../hooks/useEvolution";
 import { getExercicie } from "../../hooks/useExercicie";
 import { Container } from "../Home/styles";
-import { BackContent, TitleContainer } from "./styles";
+import { BackContent, SubtitleContainer, TitleContainer } from "./styles";
 import { format } from 'date-fns';
+import { Counter } from "../../components/Form/Counter";
 
 type EvolutionItem = {
     id: string;
@@ -85,13 +86,17 @@ export function Evolutions() {
                 <Button size="md" onClick={() => handleCreateItem()}>Adicionar</Button>
             </TitleContainer>
             <Divider />
-            <Subtitle>{exercicie?.title}</Subtitle>
-            <List 
-            items={evolutionItems} 
-            onClick={handleOpenItem} 
-            onDelete={handleDelete} 
-            titleEmptyList="Você não possui histórico cadastrado"
-            subtitleEmptyList="Adicione o histórico diário para acompanhar sua evolução"/>
+            <SubtitleContainer>
+                <Subtitle>{exercicie?.title}</Subtitle>
+                <Counter amount={evolutionItems.length} />
+            </SubtitleContainer>
+
+            <List
+                items={evolutionItems}
+                onClick={handleOpenItem}
+                onDelete={handleDelete}
+                titleEmptyList="Você não possui histórico cadastrado"
+                subtitleEmptyList="Adicione o histórico diário para acompanhar sua evolução" />
         </Container>
     )
 }

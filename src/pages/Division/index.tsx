@@ -3,12 +3,13 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Divider } from "../../components/Divider";
+import { Counter } from "../../components/Form/Counter";
 import { List } from "../../components/List";
 import { Subtitle, Title } from "../../components/Title";
 import { deleteDivision, getDivisions, getDivisionsByTrainingId } from "../../hooks/useDivision";
 import { getTraining } from "../../hooks/useTraining";
 import { Container } from "../Home/styles";
-import { BackContent, TitleContainer } from "./styles";
+import { BackContent, SubtitleContainer, TitleContainer } from "./styles";
 
 type DivisionItem = {
     id: string;
@@ -34,7 +35,7 @@ export function Division() {
 
     const handleDelete = (id: string) => {
         deleteDivision(id);
-        setRefreshKey(state =>  state+1);
+        setRefreshKey(state => state + 1);
     }
 
     useEffect(() => {
@@ -51,7 +52,7 @@ export function Division() {
         setDivisionItems(newDivisions);
     }, [refreshKey]);
 
-    
+
     function handleOpenItem(id: string) {
         navigate(`/exercicies/${id}`);
     }
@@ -76,13 +77,17 @@ export function Division() {
                 <Button size="md" onClick={() => handleCreateItem()}>Adicionar</Button>
             </TitleContainer>
             <Divider />
-            <Subtitle>{training?.title}</Subtitle>
-            <List 
-            items={divisionItems} 
-            onClick={handleOpenItem} 
-            onDelete={handleDelete}
-            titleEmptyList="Você não possui divisões cadastradas"
-            subtitleEmptyList="Crie divisões para separar seu treino" />
+            <SubtitleContainer>
+                <Subtitle>{training?.title}</Subtitle>
+                <Counter amount={divisionItems.length} />
+            </SubtitleContainer>
+
+            <List
+                items={divisionItems}
+                onClick={handleOpenItem}
+                onDelete={handleDelete}
+                titleEmptyList="Você não possui divisões cadastradas"
+                subtitleEmptyList="Crie divisões para separar seu treino" />
         </Container>
     )
 }

@@ -15,6 +15,14 @@ export const TitleContainer = styled.div`
     align-items: flex-end;
 `;
 
+export const SubtitleContainer = styled.div`
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    gap:0.25rem;
+`
+
+
 export const BackContent = styled.div`
     display:flex;
 `

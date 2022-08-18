@@ -14,6 +14,7 @@ import { useState } from "react";
 import { CgGym } from "react-icons/cg";
 import { GiBiceps } from "react-icons/gi";
 import { BsTrash } from "react-icons/bs";
+import { format } from "date-fns";
 
 type EvolutionFormData = {
     date: Date;
@@ -80,7 +81,7 @@ export function CreateEvolution() {
     }
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm<EvolutionFormData>({
-        resolver: yupResolver(divisionFormSchema)
+        resolver: yupResolver(divisionFormSchema),
     });
 
     return (
@@ -97,7 +98,10 @@ export function CreateEvolution() {
             <form>
 
                 <GroupForm>
-                    <Input type="date" {...register('date')} placeholder="Data"/>
+                    <Input type="date" 
+                    {...register('date')} 
+                    placeholder="Data"
+                    defaultValue={format(new Date(), 'yyyy-MM-dd')}/>
                     <InputError>{errors.date?.message}</InputError>
                 </GroupForm>
 

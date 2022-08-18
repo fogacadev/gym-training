@@ -3,13 +3,14 @@ import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Divider } from "../../components/Divider";
+import { Counter } from "../../components/Form/Counter";
 import { List } from "../../components/List";
 import { Subtitle, Title } from "../../components/Title";
 import { deleteDivision, getDivision, getDivisions, getDivisionsByTrainingId } from "../../hooks/useDivision";
 import { deleteExercicie, getExerciciesByDivisionId } from "../../hooks/useExercicie";
 import { getTraining } from "../../hooks/useTraining";
 import { Container } from "../Home/styles";
-import { BackContent, TitleContainer } from "./styles";
+import { BackContent, SubtitleContainer, TitleContainer } from "./styles";
 
 
 type ExercicieItem = {
@@ -34,7 +35,7 @@ export function Exercicies() {
 
     const handleDelete = (id: string) => {
         deleteExercicie(id);
-        setRefreshKey(state =>  state+1);
+        setRefreshKey(state => state + 1);
     }
 
     useEffect(() => {
@@ -50,7 +51,7 @@ export function Exercicies() {
         setExercicieItems(newExercicies);
     }, [refreshKey]);
 
-    
+
     function handleOpenItem(id: string) {
         navigate(`/evolutions/${id}`);
     }
@@ -75,13 +76,17 @@ export function Exercicies() {
                 <Button size="md" onClick={() => handleCreateItem()}>Adicionar</Button>
             </TitleContainer>
             <Divider />
-            <Subtitle>{division?.title}</Subtitle>
-            <List 
-            items={exercicieItems} 
-            onClick={handleOpenItem} 
-            onDelete={handleDelete}
-            titleEmptyList="Você não possui exercícios cadastrados"
-            subtitleEmptyList="Cadastre exercicios para acompanhar sua evolução" />
+
+            <SubtitleContainer>
+                <Subtitle>{division?.title}</Subtitle>
+                <Counter amount={exercicieItems.length} />
+            </SubtitleContainer>
+            <List
+                items={exercicieItems}
+                onClick={handleOpenItem}
+                onDelete={handleDelete}
+                titleEmptyList="Você não possui exercícios cadastrados"
+                subtitleEmptyList="Cadastre exercicios para acompanhar sua evolução" />
         </Container>
     )
 }
