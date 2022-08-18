@@ -13,6 +13,7 @@ export const Input = styled.input`
     background-color: ${props => props.theme['gray-200']};
     border-radius: 8px;
     border-color: ${props => props.theme['gray-700']};
+    border-width: 2px;
 
     :focus{
         outline:none;

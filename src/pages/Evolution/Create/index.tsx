@@ -98,10 +98,10 @@ export function CreateEvolution() {
             <form>
 
                 <GroupForm>
-                    <Input type="date" 
-                    {...register('date')} 
-                    placeholder="Data"
-                    defaultValue={format(new Date(), 'yyyy-MM-dd')}/>
+                    <Input type="date"
+                        {...register('date')}
+                        placeholder="Data"
+                        defaultValue={format(new Date(), 'yyyy-MM-dd')} />
                     <InputError>{errors.date?.message}</InputError>
                 </GroupForm>
 
@@ -109,19 +109,17 @@ export function CreateEvolution() {
                     <Input {...register('description')} placeholder="Descrição" />
                     <InputError>{errors.description?.message}</InputError>
                 </GroupForm>
+                {reps.length > 0 && (
+                    <Subtitle>Repetições</Subtitle>
+                )}
                 <RepListContent>
-                    {reps.length > 0 ?? (
-                        <Subtitle>Repetições</Subtitle>
-                    )}
                     {
                         reps.map(item => {
                             return (
                                 <div key={item.id}>
                                     <div>
                                         <GiBiceps />
-                                        {item.reps}
-                                        -
-                                        {item.weight}
+                                        {item.reps} {' / '} {item.weight}
                                     </div>
                                     <Button size="sm"
                                         type="button"

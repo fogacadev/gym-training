@@ -32,14 +32,25 @@ export const AddRepContent = styled.div`
 export const RepListContent = styled.div`
     display:flex;
     flex-direction: column;
-    padding-left: 1rem;
-    
-    gap:1rem;
 
     div {
+        margin-left:0.5rem;
         display:flex;
-        gap:0.25rem;
+        gap:0.5rem;
         align-items: center;
         justify-content: space-between;
+        border-left: 2px solid black;
+        padding-left: 0.25rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+
+        
+
+        div {
+            border-left:none;
+        }
+            
     }
+
+    
 `

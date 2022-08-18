@@ -10,6 +10,7 @@ export const Button = styled.button<ButtonProps>`
    justify-content: center;
    align-items: center;
    border-radius: 8px;
+   border-width: 2px;
    border-color: ${props => props.theme['black']};
    background-color: ${props => props.theme['gray-200']};
 
