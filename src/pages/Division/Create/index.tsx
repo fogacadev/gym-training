@@ -10,6 +10,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { BiArrowBack } from 'react-icons/bi';
+import { Select } from "../../../components/Form/Select";
+import { getDaysOfWeek } from "../../../hooks/useDayOfWeek";
 
 
 type DivisionFormData = {
@@ -31,6 +33,7 @@ type ParamTypes = {
 export function CreateDivision() {
     const navigate = useNavigate();
     const { id } = useParams<ParamTypes>();
+    const daysOfWeek = getDaysOfWeek();
 
     const handleAddDivision: SubmitHandler<DivisionFormData> = ({ title, division, dayOfWeek }: DivisionFormData) => {
         console.log('eita');
@@ -71,13 +74,17 @@ export function CreateDivision() {
                     <Input {...register('title')} placeholder="Titulo" />
                     <InputError>{errors.title?.message}</InputError>
                 </GroupForm>
-
                 <GroupForm>
                     <Input {...register('division')} placeholder="Descrição" />
                     <InputError>{errors.division?.message}</InputError>
                 </GroupForm>
                 <GroupForm>
-                    <Input {...register('dayOfWeek')} placeholder="Dia da semana" />
+                    <Select {...register('dayOfWeek')}
+                        placeholder="Dia da semana">
+                        {daysOfWeek.map(day => {
+                            return (<option key={day.index} value={day.name}>{day.name}</option>)
+                        })}
+                    </Select>
                     <InputError>{errors.dayOfWeek?.message}</InputError>
                 </GroupForm>
                 <Button size="lg" type="submit">Adicionar</Button>
