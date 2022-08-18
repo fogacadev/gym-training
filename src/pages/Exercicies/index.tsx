@@ -76,7 +76,12 @@ export function Exercicies() {
             </TitleContainer>
             <Divider />
             <Subtitle>{division?.title}</Subtitle>
-            <List items={exercicieItems} onClick={handleOpenItem} onDelete={handleDelete} />
+            <List 
+            items={exercicieItems} 
+            onClick={handleOpenItem} 
+            onDelete={handleDelete}
+            titleEmptyList="Você não possui exercícios cadastrados"
+            subtitleEmptyList="Cadastre exercicios para acompanhar sua evolução" />
         </Container>
     )
 }

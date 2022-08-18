@@ -77,7 +77,12 @@ export function Division() {
             </TitleContainer>
             <Divider />
             <Subtitle>{training?.title}</Subtitle>
-            <List items={divisionItems} onClick={handleOpenItem} onDelete={handleDelete} />
+            <List 
+            items={divisionItems} 
+            onClick={handleOpenItem} 
+            onDelete={handleDelete}
+            titleEmptyList="Você não possui divisões cadastradas"
+            subtitleEmptyList="Crie divisões para separar seu treino" />
         </Container>
     )
 }

@@ -86,7 +86,12 @@ export function Evolutions() {
             </TitleContainer>
             <Divider />
             <Subtitle>{exercicie?.title}</Subtitle>
-            <List items={evolutionItems} onClick={handleOpenItem} onDelete={handleDelete} />
+            <List 
+            items={evolutionItems} 
+            onClick={handleOpenItem} 
+            onDelete={handleDelete} 
+            titleEmptyList="Você não possui histórico cadastrado"
+            subtitleEmptyList="Adicione o histórico diário para acompanhar sua evolução"/>
         </Container>
     )
 }

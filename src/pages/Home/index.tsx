@@ -62,7 +62,12 @@ export function Home() {
             </TitleContainer>
 
             <Divider />
-            <List items={trainingItems} onClick={handleOpenItem} onDelete={handleDelete} />
+            <List 
+            items={trainingItems} 
+            titleEmptyList="Você não possui treinos cadastrados"
+            subtitleEmptyList="Crie treinos para acompanhar sua evolução"
+            onClick={handleOpenItem} 
+            onDelete={handleDelete} />
         </Container>
 
     )
