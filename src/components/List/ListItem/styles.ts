@@ -69,13 +69,19 @@ export const ConfirmIcon = styled(RiErrorWarningLine)`
 
 export const TimelineContent = styled.div`
     margin-top:1rem;
-
     display:flex;
     flex-direction: column;
-    gap:0.5rem;
 
     div {
+        margin-left:0.5rem;
+        
         display:flex;
-        gap:1rem;
+        gap:0.5rem;
+        align-items: center;
+        justify-content: space-between;
+        border-left: 2px solid black;
+        padding-left: 1rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;            
     }
 `;

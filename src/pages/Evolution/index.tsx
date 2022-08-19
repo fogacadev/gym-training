@@ -49,10 +49,10 @@ export function Evolutions() {
         const newEvolutions = evolutions.map((item) => {
             return {
                 id: item.id,
-                title: format(new Date(item.date), 'dd-MM-yyyy'),
+                title: format(new Date(item.date), 'dd/MM/yyyy'),
                 descriptionOne: item.description,
                 details: item.reps.map((rep) => {
-                    return { description: `${rep.reps} - ${rep.weight}` }
+                    return { description: `${rep.reps} / ${rep.weight}` }
                 })
             }
         });

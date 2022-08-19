@@ -22,11 +22,19 @@ export const BackContent = styled.div`
 export const AddRepContent = styled.div`
     display:flex;
     align-items: center;
+    justify-content: space-between;
 
+    margin-bottom:1rem;
     max-width: 100%;
+    gap:0.5rem;
 
-    gap:2px;
-    
+    input {
+        flex:1;
+    }
+
+    button{
+        height:100%;
+    }
 `
 
 export const RepListContent = styled.div`

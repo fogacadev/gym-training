@@ -12,14 +12,17 @@ export const EmptyContainer = styled.div`
     flex-direction: column;
     align-items:center;
     margin-top:2rem;
+    text-align:center;
     
     p{
         margin-top:1rem;
         font-weight: 900;
+        text-align:center;
         color:${props => props.theme['gray-400']};
     }
     small{
         color:${props => props.theme['gray-300']};
         font-weight: 400;
+        text-align:center;
     }
 `
